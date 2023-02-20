@@ -19,10 +19,34 @@ namespace PizzaApp.Pages_Pizzas
         }
 
         public IList<Pizza> Pizza { get;set; }
+       
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+
+        public SelectList Categories { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string CategoryName { get; set; }
 
         public async Task OnGetAsync()
         {
-            Pizza = await _context.Pizza.ToListAsync();
+
+            IQueryable<string> categoryQuery = from t in _context.Pizza
+                                            orderby t.Category
+                                            select t.Category;
+
+           var pizzas = from p in _context.Pizza select p;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                pizzas = pizzas.Where(s => s.PizzaName.Contains(SearchString));
+            }
+
+            if (!string.IsNullOrEmpty(CategoryName))
+            {
+                pizzas = pizzas.Where(x => x.Category == CategoryName);
+            }
+            Categories = new SelectList(await locationQuery.Distinct().ToListAsync());
+
+            Pizza = await pizzas.ToListAsync();
         }
     }
 }
