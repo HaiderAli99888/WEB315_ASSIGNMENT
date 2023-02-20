@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesPizza.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace PizzaApp.Pages_Pizzas
 {
@@ -44,7 +45,7 @@ namespace PizzaApp.Pages_Pizzas
             {
                 pizzas = pizzas.Where(x => x.Category == CategoryName);
             }
-            Categories = new SelectList(await locationQuery.Distinct().ToListAsync());
+            Categories = new SelectList(await categoryQuery.Distinct().ToListAsync());
 
             Pizza = await pizzas.ToListAsync();
         }
