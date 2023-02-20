@@ -28,6 +28,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.Pizza[0].Price)
             </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].Topping)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].Discount)
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -49,6 +60,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Topping)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |

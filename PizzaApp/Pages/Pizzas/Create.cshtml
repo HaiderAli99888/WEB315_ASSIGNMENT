@@ -38,6 +38,23 @@
                 <input asp-for="Pizza.Price" class="form-control" />
                 <span asp-validation-for="Pizza.Price" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Pizza.Topping" class="control-label"></label>
+                <input asp-for="Pizza.Topping" class="form-control" />
+                <span asp-validation-for="Pizza.Topping" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pizza.Rating" class="control-label"></label>
+                <input asp-for="Pizza.Rating" class="form-control" />
+                <span asp-validation-for="Pizza.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pizza.Discount" class="control-label"></label>
+                <input asp-for="Pizza.Discount" class="form-control" />
+                <span asp-validation-for="Pizza.Discount" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -50,5 +67,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
