@@ -17,3 +17,7 @@ Assignment 1 - A Pizza website which shows different kind of Pizzas
  ## Created the initial database schema using EF's migration feature
  dotnet ef migrations add InitialCreate
  dotnet ef database update
+
+ ## Migration commands
+ dotnet ef migrations add Topping,Rating,Discount
+ dotnet ef database update
