@@ -15,5 +15,9 @@ namespace RazorPagesPizza.Models
         public string PizzaSize { get; set; }
         public decimal Price { get; set; }
 
+        public string Topping { get; set; }
+        public string Rating { get; set; }
+        public int Discount { get; set; }
+
     }
 }
