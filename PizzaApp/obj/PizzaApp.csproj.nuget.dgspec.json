@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Haider Ali\\Desktop\\WEB315_ASSIGNMENT-Assignment1\\PizzaApp\\PizzaApp.csproj": {}
+    "C:\\Users\\Haider Ali\\Desktop\\WEB315 _ASSIGNMENT1\\WEB315_ASSIGNMENT\\PizzaApp\\PizzaApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Haider Ali\\Desktop\\WEB315_ASSIGNMENT-Assignment1\\PizzaApp\\PizzaApp.csproj": {
+    "C:\\Users\\Haider Ali\\Desktop\\WEB315 _ASSIGNMENT1\\WEB315_ASSIGNMENT\\PizzaApp\\PizzaApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Haider Ali\\Desktop\\WEB315_ASSIGNMENT-Assignment1\\PizzaApp\\PizzaApp.csproj",
+        "projectUniqueName": "C:\\Users\\Haider Ali\\Desktop\\WEB315 _ASSIGNMENT1\\WEB315_ASSIGNMENT\\PizzaApp\\PizzaApp.csproj",
         "projectName": "PizzaApp",
-        "projectPath": "C:\\Users\\Haider Ali\\Desktop\\WEB315_ASSIGNMENT-Assignment1\\PizzaApp\\PizzaApp.csproj",
+        "projectPath": "C:\\Users\\Haider Ali\\Desktop\\WEB315 _ASSIGNMENT1\\WEB315_ASSIGNMENT\\PizzaApp\\PizzaApp.csproj",
         "packagesPath": "C:\\Users\\Haider Ali\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Haider Ali\\Desktop\\WEB315_ASSIGNMENT-Assignment1\\PizzaApp\\obj\\",
+        "outputPath": "C:\\Users\\Haider Ali\\Desktop\\WEB315 _ASSIGNMENT1\\WEB315_ASSIGNMENT\\PizzaApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Haider Ali\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,26 +37,6 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[5.*, )"
-            },
-            "Microsoft.EntityFrameworkCore.SQLite": {
-              "target": "Package",
-              "version": "[5.*, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[5.*, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[5.*, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
