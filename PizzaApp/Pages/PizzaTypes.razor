@@ -2,6 +2,32 @@
 
 <h3>Pizza Types</h3>
 
+<button @onclick="ShowTypes">
+    Show Types
+</button>
+
+<p>
+
+    @for (var i = 0; i < types.Length; i++)
+    {
+        @types[i] <br />
+    }
+
+
+</p>
+
 @code {
+
+    private string[] types = new string[5];
+
+    private void ShowTypes()
+    {
+        types[0] = "Chicken Pizza";
+        types[1] = "Peproni Pizza";
+        types[2] = "Bacon Pizza";
+        types[3] = "Beef Pizza";
+        types[4] = "Hebenero Pizza";
+    }
+
 
 }
