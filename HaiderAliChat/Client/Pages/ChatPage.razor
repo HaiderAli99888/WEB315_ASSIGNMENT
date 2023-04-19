@@ -55,10 +55,17 @@
             StateHasChanged();
         });
 
+        hubConnection.On<string>("ReceiveAnonMessage", (message) =>
+        {
+            var encodedMsg = $"Anonymous: {message}";
+            messages.Add(encodedMsg);
+            StateHasChanged();
+        });
+
         await hubConnection.StartAsync();
     }
 
-    async Task SendTyping(){
+    async Task Typing(){
         
         if (userInput != "" && userInput != null){
             await hubConnection.SendAsync("Typing", userInput);
