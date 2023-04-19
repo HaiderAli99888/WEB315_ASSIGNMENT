@@ -15,7 +15,7 @@
 <div class="form-group">
     <label>
         Message:
-        <input @bind="messageInput" size="50" disabled="@(!IsConnected)" @onclick="(e) => SendTyping()"/>
+        <input @bind="messageInput" size="50" disabled="@(!IsConnected)" @onclick="(e) => Typing()"/>
     </label>
 </div>
 <button @onclick="Send" disabled="@(!IsConnected)">Send</button>
@@ -72,9 +72,15 @@
         }
     }
 
-    async Task Send() =>
-        await hubConnection.SendAsync("SendMessage", userInput, messageInput);
-
+    async Task Send() {
+            
+            if (userInput != "" && userInput != null){
+                await hubConnection.SendAsync("SendMessage", userInput, messageInput);
+            }
+            else{
+                await hubConnection.SendAsync("AnonMsg", messageInput);
+            }
+        }
     public bool IsConnected =>
         hubConnection.State == HubConnectionState.Connected;
 
