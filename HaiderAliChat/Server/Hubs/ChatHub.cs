@@ -9,11 +9,13 @@ namespace HaiderAliChat.Server.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
-        public async Task Typing(string user)
+
+         public async Task Typing(string user)
         {
             await Clients.Others.SendAsync("UserTyping", user);
         }
-        public async Task AnonMsg(string message)
+
+         public async Task AnonMsg(string message)
         {
             await Clients.All.SendAsync("ReceiveAnonMessage", message);
         }

@@ -1,94 +1,91 @@
 ﻿@page "/chat"
-
 @using Microsoft.AspNetCore.SignalR.Client
 @inject NavigationManager NavigationManager
 @implements IAsyncDisposable
 
+<link rel="stylesheet" href="HaiderAliChat.styles.css">
 
-<h2>My Chat Page</h2>
+<h2>ChatPage</h2>
 <div class="form-group">
-    <label>
-        Username:
-        <input @bind="userInput" maxlength="63" disabled="@(!IsConnected)"/>
-    </label>
+   <label>
+   Username:
+   <input @bind="userInput" disabled="@(!IsConnected)" maxlength="63"/>
+   </label>
 </div>
 <div class="form-group">
-    <label>
-        Message:
-        <input @bind="messageInput" size="50" disabled="@(!IsConnected)" @onclick="(e) => Typing()"/>
-    </label>
+   <label>
+   Message:
+   <input @bind="messageInput" disabled="@(!IsConnected)" size="50" @onclick="(e) => Typing()"/>
+   </label>
 </div>
 <button @onclick="Send" disabled="@(!IsConnected)">Send</button>
 <p>@userTyping</p>
 <hr>
-
 <ul id="messagesList">
-    @foreach (var message in messages)
-    {
-        <li>@message</li>
-    }
+   @foreach (var message in messages)
+   {
+   <li>@message</li>
+   }
 </ul>
-
 @code {
-    private HubConnection hubConnection;
-    private List<string> messages = new List<string>();
-    private string userInput;
-    private string messageInput;
-
-    protected override async Task OnInitializedAsync()
-    {
-        hubConnection = new HubConnectionBuilder()
-            .WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
-            .Build();
-
-        hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
-        {
-            var encodedMsg = $"{user}: {message}";
-            messages.Add(encodedMsg);
-            StateHasChanged();
-        });
-
-        hubConnection.On<string>("UserTyping", (user) =>
-        {
-            var encodedMsg = $"{user} is typing a message...";
-            userTyping = encodedMsg;
-            StateHasChanged();
-        });
-
-        hubConnection.On<string>("ReceiveAnonMessage", (message) =>
-        {
-            var encodedMsg = $"Anonymous: {message}";
-            messages.Add(encodedMsg);
-            StateHasChanged();
-        });
-
-        await hubConnection.StartAsync();
-    }
-
-    async Task Typing(){
-        
-        if (userInput != "" && userInput != null){
-            await hubConnection.SendAsync("Typing", userInput);
-        }
-    }
-
-    async Task Send() {
-            
-            if (userInput != "" && userInput != null){
-                await hubConnection.SendAsync("SendMessage", userInput, messageInput);
-            }
-            else{
-                await hubConnection.SendAsync("AnonMsg", messageInput);
-            }
-        }
-    public bool IsConnected =>
-        hubConnection.State == HubConnectionState.Connected;
-
-    public async ValueTask DisposeAsync()
-    {
-        if (hubConnection is not null)
-        {
-            await hubConnection.DisposeAsync();
-        }
-    }
+private HubConnection hubConnection;
+private List
+<string>
+messages = new List
+<string>
+();
+private string userInput;
+private string messageInput;
+private string userTyping;
+protected override async Task OnInitializedAsync()
+{
+hubConnection = new HubConnectionBuilder()
+.WithUrl(NavigationManager.ToAbsoluteUri("/chathub"))
+.Build();
+hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+{
+var encodedMsg = $"{user}: {message}";
+messages.Add(encodedMsg);
+StateHasChanged();
+});
+hubConnection.On
+<string>
+("UserTyping", (user) =>
+{
+var encodedMsg = $"{user} is typing a message...";
+userTyping = encodedMsg;
+StateHasChanged();
+});
+hubConnection.On
+<string>
+("ReceiveAnonMessage", (message) =>
+{
+var encodedMsg = $"Anonymous: {message}";
+messages.Add(encodedMsg);
+StateHasChanged();
+});
+await hubConnection.StartAsync();
+}
+async Task Typing(){
+if (userInput != "" && userInput != null){
+await hubConnection.SendAsync("Typing", userInput);
+}
+}
+async Task Send() {
+if (userInput != "" && userInput != null){
+await hubConnection.SendAsync("SendMessage", userInput, messageInput);
+}
+else{
+await hubConnection.SendAsync("AnonMsg", messageInput);
+}
+}
+public bool IsConnected =>
+hubConnection.State == HubConnectionState.Connected;
+public async ValueTask DisposeAsync()
+{
+if (hubConnection is not null)
+{
+await hubConnection.DisposeAsync();
+}
+}
 }
